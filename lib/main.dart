@@ -2,28 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:untitled/widgets/bottom_bar.dart';
 import 'package:flutter/services.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(App());
 
-class MyApp extends StatelessWidget {
-  const MyApp({ Key? key }) : super(key: key);
+class App extends StatelessWidget {
+  const App({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
     TabController controller;
     return MaterialApp(
-      title: "Share",
+      debugShowCheckedModeBanner: false,
+      title: "Test",
       theme: ThemeData(
-        primaryColor: Colors.blueGrey,
-        accentColor: Colors.white
+        primaryColor: Colors.blueGrey
       ),
-      home: MyHomePage(),
+      home: Page(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({ Key? key }) : super(key: key);
+class Page extends StatelessWidget {
+  const Page({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,25 @@ class MyHomePage extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Test")
+          title: Text(
+            "Test",
+            style: TextStyle(
+              color: Colors.blueGrey
+            ),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          actions: <Widget>[
+            IconButton(
+              onPressed: (){
+                print('search');
+              },
+              icon: Icon(
+                Icons.search,
+                color: Colors.blueGrey,
+              )
+            )
+          ],
         ),
         body: TabBarView(
           physics: NeverScrollableScrollPhysics(),
